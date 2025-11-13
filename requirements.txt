@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+langchain
+langchain-google-genai
+supabase
+pypdf
+psycopg2-binary
+langchain-community
+tiktoken
+sentence-transformers
