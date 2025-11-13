@@ -1,6 +1,6 @@
 # LangChain RAG API with Supabase and Gemini
 
-This project is a production-grade, retrieval-augmented generation (RAG) API it provides a conversational interface to query a knowledge base of PDF documents, leveraging a sophisticated, database-backed memory system.
+This project is a production-grade, retrieval-augmented generation (RAG) API. It provides a conversational interface to query a knowledge base of PDF documents, leveraging a sophisticated, database-backed memory system.
 
 The application is built with Python, FastAPI, LangChain, Supabase (`pgvector`), and Google's Gemini models.
 
@@ -41,16 +41,18 @@ The application is built with Python, FastAPI, LangChain, Supabase (`pgvector`),
 ## Setup and Installation
 
 ### 1. Prerequisites
-
 - Python 3.8+
 - A Supabase account (free tier is sufficient)
 - A Google AI Studio API key
 
 ### 2. Initial Setup
-
-- Clone this repository.
+- **Clone the repository:**
+  ```bash
+  git clone https://github.com/780Noman/langchain-ai-backend-developer-project.git
+  cd langchain-ai-backend-developer-project
+  ```
 - Create a new project on [Supabase](https://supabase.com/).
-- In the Supabase dashboard, navigate to the **SQL Editor** and run the contents of the `database_setup.sql` file (or the script below) to enable `pgvector` and create all necessary tables and functions.
+- In the Supabase dashboard, navigate to the **SQL Editor** and run the script provided in "3. Database Setup Script" below to enable `pgvector` and create all necessary tables and functions.
 
 ### 3. Database Setup Script
 
@@ -135,7 +137,6 @@ $$;
 ```
 
 ### 4. Environment Configuration
-
 - Create a file named `.env` in the project root.
 - Add your credentials to the `.env` file:
   ```dotenv
@@ -146,9 +147,9 @@ $$;
   # Google AI Credentials (from Google AI Studio)
   GOOGLE_API_KEY="YOUR_GOOGLE_API_KEY"
   ```
+  *(Note: Ensure your Google Cloud project has billing enabled if you encounter quota errors.)*
 
 ### 5. Install Dependencies
-
 - Create and activate a Python virtual environment:
   ```bash
   python -m venv venv
@@ -163,17 +164,14 @@ $$;
 ## Usage
 
 ### 1. Ingest Documents
-
 - Place your PDF files into the `/documents` directory.
 - Run the ingestion script from the project root:
   ```bash
   python scripts/ingest.py
   ```
-
   *(Note: The first run will download the embedding model, which may take a few minutes.)*
 
 ### 2. Run the API Server
-
 - Start the FastAPI server with Uvicorn:
   ```bash
   uvicorn app.main:app --reload
@@ -182,7 +180,6 @@ $$;
 - Interactive documentation is available at `http://127.0.0.1:8000/docs`.
 
 ### 3. Run Unit Tests
-
 - To verify all components, run the test suite from the project root:
   ```bash
   python -m unittest discover tests
@@ -191,7 +188,6 @@ $$;
 ## API Endpoints
 
 ### `POST /query`
-
 Handles conversational RAG queries.
 
 - **Request Body:**
@@ -211,7 +207,6 @@ Handles conversational RAG queries.
   ```
 
 ### `GET /eval`
-
 Runs a predefined set of queries to evaluate the retrieval performance.
 
 - **Request:** `GET http://127.0.0.1:8000/eval`
